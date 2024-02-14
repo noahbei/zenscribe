@@ -1,10 +1,10 @@
 import React from 'react';
-import Homepage from './components/Homepage'
+import Dashboard from './components/Dashboard'
 
 function App() {
   return (
     <div>
-      <Homepage />
+      <Dashboard />
     </div>
   );
 }
