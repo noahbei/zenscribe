@@ -1,8 +1,13 @@
 import React from 'react';
 
 const Dashboard = () => {
+  const dashboardStyle = {
+    marginLeft: "200px",
+    padding: "0 20px"
+  }
+
   return (
-    <div>
+    <div style={dashboardStyle}>
       <header>
         <h1>Dashboard</h1>
       </header>
