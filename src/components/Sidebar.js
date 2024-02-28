@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { ReactComponent as Logo } from '../logo.svg';
 
 const Sidebar = () => {
   const sidebarStyle = {
@@ -28,7 +29,8 @@ const Sidebar = () => {
 
   return (
     <div style={sidebarStyle}>
-      <NavLink to={'/'} style={({ isActive }) => {
+      <Logo/>
+      <NavLink to={'/Home'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Home
@@ -38,10 +40,10 @@ const Sidebar = () => {
             }}>
         Dashboard
       </NavLink>
-      <NavLink to={'/Notes'} style={({ isActive }) => {
+      <NavLink to={'/Journal'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
-        Notes
+        Journal
       </NavLink>
       <NavLink to={'/Contact'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;

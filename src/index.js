@@ -5,8 +5,9 @@ import './index.css';
 import Homepage from './pages/Homepage.js';
 import Error from './pages/Error.js';
 import Dashboard from './pages/Dashboard.js';
-import Notes from './pages/Notes.js';
 import Contact from './pages/Contact.js';
+import Journal from './pages/Journal.js';
+import Home from './pages/Home.js';
 
 const router = createBrowserRouter([{
   path: '/',
@@ -14,12 +15,16 @@ const router = createBrowserRouter([{
   errorElement: <Error />,
   children: [
     {
+      path: '/Home',
+      element: <Home />
+    },
+    {
       path: '/Dashboard',
       element: <Dashboard />
     },
     {
-      path: '/Notes',
-      element: <Notes />
+      path: '/Journal',
+      element: <Journal />
     },
     {
       path: '/Contact',
