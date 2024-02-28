@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const sidebarStyle = {
@@ -11,27 +12,42 @@ const Sidebar = () => {
     paddingTop: "20px",
   };
 
-  const linkStyle = {
+  const NavLinkStyle = {
     display: "block",
     padding: "10px 20px",
     color: "white",
     textDecoration: "none",
   };
 
+  const NavLinkStyleSelected = {
+    display: "block",
+    padding: "10px 20px",
+    color: "blue",
+    textDecoration: "none",
+  };
+
   return (
     <div style={sidebarStyle}>
-      <a href="#" style={linkStyle}>
+      <NavLink to={'/'} style={({ isActive }) => {
+              return isActive ? NavLinkStyleSelected : NavLinkStyle;
+            }}>
         Home
-      </a>
-      <a href="#" style={linkStyle}>
-        About
-      </a>
-      <a href="#" style={linkStyle}>
-        Services
-      </a>
-      <a href="#" style={linkStyle}>
+      </NavLink>
+      <NavLink to={'/Dashboard'} style={({ isActive }) => {
+              return isActive ? NavLinkStyleSelected : NavLinkStyle;
+            }}>
+        Dashboard
+      </NavLink>
+      <NavLink to={'/Notes'} style={({ isActive }) => {
+              return isActive ? NavLinkStyleSelected : NavLinkStyle;
+            }}>
+        Notes
+      </NavLink>
+      <NavLink to={'/Contact'} style={({ isActive }) => {
+              return isActive ? NavLinkStyleSelected : NavLinkStyle;
+            }}>
         Contact
-      </a>
+      </NavLink>
     </div>
   );
 };
