@@ -1,21 +1,21 @@
 import React from 'react';
 
-const Notes = () => {
-  const notesStyle = {
+const Home = () => {
+  const dashboardStyle = {
     marginLeft: "200px",
     padding: "0 20px"
   }
 
   return (
-    <div style={notesStyle}>
+    <div style={dashboardStyle}>
       <header>
-        <h1>Notes</h1>
+        <h1>Home</h1>
       </header>
       <main>
-        <p>enter notes here</p>
+        <p>Home page info here</p>
       </main>
     </div>
   );
 }
 
-export default Notes;
+export default Home;

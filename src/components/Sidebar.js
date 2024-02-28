@@ -30,7 +30,7 @@ const Sidebar = () => {
   return (
     <div style={sidebarStyle}>
       <Logo/>
-      <NavLink to={'/'} style={({ isActive }) => {
+      <NavLink to={'/Home'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Home
@@ -40,10 +40,10 @@ const Sidebar = () => {
             }}>
         Dashboard
       </NavLink>
-      <NavLink to={'/Notes'} style={({ isActive }) => {
+      <NavLink to={'/Journal'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
-        Notes
+        Journal
       </NavLink>
       <NavLink to={'/Contact'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
