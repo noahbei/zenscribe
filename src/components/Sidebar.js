@@ -22,7 +22,7 @@ const Sidebar = () => {
   const NavLinkStyleSelected = {
     display: "block",
     padding: "10px 20px",
-    color: "blue",
+    color: "#97C5ED",
     textDecoration: "none",
   };
 
