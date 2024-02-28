@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { ReactComponent as Logo } from '../logo.svg';
 
 const Sidebar = () => {
   const sidebarStyle = {
@@ -28,6 +29,7 @@ const Sidebar = () => {
 
   return (
     <div style={sidebarStyle}>
+      <Logo/>
       <NavLink to={'/'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
