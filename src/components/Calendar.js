@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Calendar.css';
+import Button from './Button';
 
 const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -32,9 +33,9 @@ const Calendar = () => {
   return (
     <div className="calendar">
       <div className="calendar-header">
-        <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>Prev</button>
+        <Button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>Prev</Button>
         <h2>{months[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
-        <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}>Next</button>
+        <Button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}>Next</Button>
       </div>
       <div className="calendar-body">
         {daysOfWeek.map(day => (
