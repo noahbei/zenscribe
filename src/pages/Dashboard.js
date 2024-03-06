@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from '../components/Button';
+import Calendar from '../components/Calendar';
+import WeeklyCalendar from '../components/WeeklyCalendar';
 
 const Dashboard = () => {
   const dashboardStyle = {
@@ -24,12 +27,12 @@ const Dashboard = () => {
       </header>
       <main>
         <div style={dashboardContainer}>
-          <button>New Entry</button>
-          <div style={calStyle}>calendar
-          <img src="https://via.placeholder.com/500" alt="Placeholder" />
+          <Button>New Entry</Button>
+          <div style={calStyle}>
+            <Calendar></Calendar>
           </div>
           <div>
-            <img src="https://via.placeholder.com/600x250" alt="Placeholder" />
+            <WeeklyCalendar></WeeklyCalendar>
           </div>
         </div>
       </main>
