@@ -12,13 +12,16 @@ const Dashboard = () => {
   const dashboardContainer = {
     display: 'grid',
     gridTemplateRows: '1fr 1fr',
-    gridTemplateColumns: '2fr 2fr'
+    gridTemplateColumns: '2fr 2fr',
+    gap: '40px'
   }
 
   const calStyle = {
     gridColumnStart: '2',
     gridRowStart: '1',
-    gridRowEnd: '-1'
+    gridRowEnd: '-1',
+    display: 'flex',
+    alignItems: 'center'
   }
   return (
     <div style={dashboardStyle}>
