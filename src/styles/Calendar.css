@@ -1,0 +1,40 @@
+.calendar {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .calendar-cell {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .empty-cell {
+    visibility: hidden;
+  }
+  
+  .day-of-week {
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
