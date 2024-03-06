@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard.js';
 import Contact from './pages/Contact.js';
 import Journal from './pages/Journal.js';
 import Home from './pages/Home.js';
+import AuthPage from './pages/AuthPage.js'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -16,7 +17,7 @@ const router = createBrowserRouter([{
   children: [
     {
       path: '/Home',
-      element: <Home />
+      element: <AuthPage />
     },
     {
       path: '/Dashboard',
