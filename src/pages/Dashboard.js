@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from '../components/Button';
+import Calendar from '../components/Calendar';
+import WeeklyCalendar from '../components/WeeklyCalendar';
 
 const Dashboard = () => {
   const dashboardStyle = {
@@ -9,13 +12,16 @@ const Dashboard = () => {
   const dashboardContainer = {
     display: 'grid',
     gridTemplateRows: '1fr 1fr',
-    gridTemplateColumns: '2fr 2fr'
+    gridTemplateColumns: '2fr 2fr',
+    gap: '40px'
   }
 
   const calStyle = {
     gridColumnStart: '2',
     gridRowStart: '1',
-    gridRowEnd: '-1'
+    gridRowEnd: '-1',
+    display: 'flex',
+    alignItems: 'center'
   }
   return (
     <div style={dashboardStyle}>
@@ -24,12 +30,12 @@ const Dashboard = () => {
       </header>
       <main>
         <div style={dashboardContainer}>
-          <button>New Entry</button>
-          <div style={calStyle}>calendar
-          <img src="https://via.placeholder.com/500" alt="Placeholder" />
+          <Button>New Entry</Button>
+          <div style={calStyle}>
+            <Calendar></Calendar>
           </div>
           <div>
-            <img src="https://via.placeholder.com/600x250" alt="Placeholder" />
+            <WeeklyCalendar></WeeklyCalendar>
           </div>
         </div>
       </main>
