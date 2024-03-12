@@ -32,10 +32,10 @@ const Dashboard = () => {
         <div style={dashboardContainer}>
           <Button>New Entry</Button>
           <div style={calStyle}>
-            <Calendar></Calendar>
+            <Calendar/>
           </div>
           <div>
-            <WeeklyCalendar></WeeklyCalendar>
+            <WeeklyCalendar/>
           </div>
         </div>
       </main>
