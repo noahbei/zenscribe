@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../logo.svg';
+import { signUpWithEmailAndPassword } from './auth_sign_up';
+import { signInWithEmailAndPassword } from './auth_sign_in';
+
 
 
 const AuthPage = () => {
@@ -12,13 +15,28 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submitted!');
     console.log('Username:', username);
     console.log('Password:', password);
-    // Add your authentication logic here
+  
+    try {
+      if (isLogin) {
+        // If login mode, call signInWithEmailAndPassword
+        await signInWithEmailAndPassword(username, password);
+        console.log('User logged in successfully!');
+      } else {
+        // If signup mode, call signUpWithEmailAndPassword
+        await signUpWithEmailAndPassword(username, password);
+        console.log('User signed up successfully!');
+      }
+    } catch (error) {
+      console.error('Authentication error:', error.message);
+      // Handle any authentication errors here
+    }
   };
+  
 
   const authPageStyle = {
     display: 'flex',
