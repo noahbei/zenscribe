@@ -10,6 +10,15 @@ const Journal = () => {
     resize: "none"
   }
 
+  const barStyle = {
+    display: "flex",
+    justifyContent: "space-around"
+  }
+
+  const elemStyle = {
+    width: "200px"
+  }
+
   const [note, setNote] = useState('')
 
   function handleChange(event) {
@@ -28,6 +37,10 @@ const Journal = () => {
         <h1>Journal</h1>
       </header>
       <main>
+        <div style={barStyle}>
+          <div style={elemStyle}>Hint Stuff</div>
+          <div style={elemStyle}>Rate your day</div>
+        </div>
         <form onSubmit={handleSubmit}>
           <textarea style={textareaStyle}
             value={note}
