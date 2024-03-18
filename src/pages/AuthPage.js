@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../logo.svg';
 import { auth, googleProvider } from '../config/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,7 +12,7 @@ const AuthPage = () => {
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,6 +30,14 @@ const AuthPage = () => {
       console.error(error)
     }
   };
+
+  const logout = async () => {
+    try {
+      await signOut(auth)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const authPageStyle = {
     display: 'flex',
@@ -80,6 +88,8 @@ const AuthPage = () => {
         <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
       </form>
       <button onClick={signInWithGoogle}>Sign in with google</button>
+      <button onClick={logout}>logout</button>
+
       <p>
         {isLogin ? 'Don\'t have an account?' : 'Already have an account?'}
         <Link to="#" onClick={toggleAuthMode}>
