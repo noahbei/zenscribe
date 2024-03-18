@@ -1,41 +1,58 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../logo.svg';
-
+import { auth, googleProvider } from '../config/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
-
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted!');
-    console.log('Username:', username);
-    console.log('Password:', password);
-    // Add your authentication logic here
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error(error)
+    }
   };
+
+  const signInWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.error(error)
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await signOut(auth)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const authPageStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '600px', // Adjust as needed to fit your design
+    height: '600px',
 
     padding: '2px',
-    //transform: 'scale(1.75)',
     margin: 'auto',
   };
 
   const Logostyle = {
-    width: '250px', // Adjust as needed
-    height: '250px', // Adjust as needed
-    marginLeft: '45px',
+    width: '250px', 
+    height: '250px',
     marginBottom: '1px',
     
   }
@@ -46,13 +63,13 @@ const AuthPage = () => {
       <h2>{isLogin ? 'Login' : 'Signup'}</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -70,6 +87,9 @@ const AuthPage = () => {
 
         <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
       </form>
+      <button onClick={signInWithGoogle}>Sign in with google</button>
+      <button onClick={logout}>logout</button>
+
       <p>
         {isLogin ? 'Don\'t have an account?' : 'Already have an account?'}
         <Link to="#" onClick={toggleAuthMode}>
