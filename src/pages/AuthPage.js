@@ -89,6 +89,7 @@ const AuthPage = () => {
       </form>
       <button onClick={signInWithGoogle}>Sign in with google</button>
       <button onClick={logout}>logout</button>
+      <p>Current Account: <span>{auth?.currentUser?.email}</span></p>
 
       <p>
         {isLogin ? 'Don\'t have an account?' : 'Already have an account?'}
