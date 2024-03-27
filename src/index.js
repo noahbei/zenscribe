@@ -9,6 +9,7 @@ import Contact from './pages/Contact.js';
 import Journal from './pages/Journal.js';
 import Home from './pages/Home.js';
 import AuthPage from './pages/AuthPage.js'
+import Entries from './pages/Entries.js';
 
 const router = createBrowserRouter([{
   path: '/',
@@ -30,6 +31,10 @@ const router = createBrowserRouter([{
     {
       path: '/Contact',
       element: <Contact />
+    },
+    {
+      path: '/Entries',
+      element: <Entries />
     }
   ]
 }]);
