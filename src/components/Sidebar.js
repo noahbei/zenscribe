@@ -50,6 +50,11 @@ const Sidebar = () => {
             }}>
         Contact
       </NavLink>
+      <NavLink to={'/Entries'} style={({ isActive }) => {
+              return isActive ? NavLinkStyleSelected : NavLinkStyle;
+            }}>
+        Entries
+      </NavLink>
     </div>
   );
 };
