@@ -21,7 +21,7 @@ const Journal = () => {
 
   function handleRatingChange(event) {
     if (parseInt(event.target.value) >= 0 && parseInt(event.target.value) <= 10) {
-      setRating(event.target.value)
+      setRating(parseInt(event.target.value))
     }
   }
 
@@ -77,7 +77,7 @@ const Journal = () => {
             autoFocus
             required
           />
-          <input onChange={handleRatingChange} placeholder="ratin" type="number" name="quantity" min="0" max="10" required/>
+          <input onChange={handleRatingChange} placeholder="rating" type="number" name="quantity" min="0" max="10" required/>
           <button type="submit">Submit</button>
         </form>
       </main>
