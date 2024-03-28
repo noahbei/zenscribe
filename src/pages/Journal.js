@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { auth, db } from "../config/firebase"
 import { collection, addDoc } from "firebase/firestore";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Journal = () => {
   const notesStyle = {
@@ -44,21 +46,26 @@ const Journal = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    try {
-      const docRef = await addDoc(collection(db, "notes"), {
-        user: auth.currentUser.uid,
-        note: note,
-        createdAt: getDate(),
-        rating: rating
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    if (auth.currentUser) {
+      try {
+        const docRef = await addDoc(collection(db, "notes"), {
+          user: auth.currentUser.uid,
+          note: note,
+          createdAt: getDate(),
+          rating: rating
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+  
+      setNote('')
+      setRating(0)
     }
-
-    setNote('')
-    setRating(0)
+    else {
+      toast("User not signed in");
+      console.log("else")
+    }
   }
 
   return (
@@ -67,6 +74,17 @@ const Journal = () => {
         <h1>Journal</h1>
       </header>
       <main>
+        <ToastContainer position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <form onSubmit={handleSubmit}>
           <textarea style={textareaStyle}
             value={note}
