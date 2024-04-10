@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from '../config/firebase'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Button from '../components/Button';
+import EntryView from '../components/EntryView';
 
 const Entries = () => {
   const outerStyle = {
@@ -36,11 +37,12 @@ const Entries = () => {
       </header>
       <main>
         <Button onClick={fetchData}>Refresh</Button>
-        <ul>
+        <div>
           {entries.map(entry => (
-            <li key={entry.createdAt}>{entry.note}</li>
+            <EntryView date={entry.createdAt}>{entry.note}</EntryView>
+            // key={entry.createdAt}
           ))}
-        </ul>
+        </div>
       </main>
     </div>
   );
