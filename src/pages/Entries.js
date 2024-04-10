@@ -11,18 +11,18 @@ const Entries = () => {
   }
 
   const [entries, setEntries] = useState([]);
-    const fetchData = async () => {
-        try {
-            const q = query(collection(db, "notes"), where("user", "==", auth.currentUser.uid));
-            const querySnapshot = await getDocs(q);
-            const entriesData = querySnapshot.docs.map((doc) => {
-                return { id: doc.id, ...doc.data() };
-            });
-            setEntries(entriesData);
-        } catch (error) {
-            console.error('Error fetching entries: ', error);
-        }
-    };
+  const fetchData = async () => {
+    try {
+      const q = query(collection(db, "notes"), where("user", "==", auth.currentUser.uid));
+      const querySnapshot = await getDocs(q);
+      const entriesData = querySnapshot.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() };
+      });
+      setEntries(entriesData);
+    } catch (error) {
+      console.error('Error fetching entries: ', error);
+    }
+  };
   useEffect(() => {
     if (auth.currentUser) {
       fetchData();
