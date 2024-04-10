@@ -1,0 +1,13 @@
+
+.entry-view {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.entry-view:hover {
+    background-color: #f0f0f0;
+}
