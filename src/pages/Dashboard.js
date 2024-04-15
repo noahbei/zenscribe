@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/Button';
 import Calendar from '../components/Calendar';
 import WeeklyCalendar from '../components/WeeklyCalendar';
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = () => {
   const dashboardStyle = {
@@ -30,7 +31,9 @@ const Dashboard = () => {
       </header>
       <main>
         <div style={dashboardContainer}>
-          <Button>New Entry</Button>
+          <Button>
+            <NavLink to={'/Journal'}>New Entry</NavLink>
+          </Button>
           <div style={calStyle}>
             <Calendar/>
           </div>
