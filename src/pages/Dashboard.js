@@ -24,6 +24,12 @@ const Dashboard = () => {
     display: 'flex',
     alignItems: 'center'
   }
+  
+  const buttonStyle = {
+    width: '100%',
+    height: '100%'
+  }
+
   return (
     <div style={dashboardStyle}>
       <header>
@@ -31,9 +37,9 @@ const Dashboard = () => {
       </header>
       <main>
         <div style={dashboardContainer}>
-          <Button>
-            <NavLink to={'/Journal'}>New Entry</NavLink>
-          </Button>
+          <NavLink to={'/Journal'}>
+            <Button style={buttonStyle}>New Entry</Button>
+          </NavLink>
           <div style={calStyle}>
             <Calendar/>
           </div>
