@@ -8,12 +8,15 @@ const Contact = () => {
 
   return (
     <div style={contactStyle}>
-      <header>
-        <h1>Contact</h1>
-      </header>
-      <main>
-        <p>contact page here</p>
-      </main>
+      <h1>Contact Us</h1>
+      <p>Feel free to reach out to us using the information below:</p>
+
+      <div>
+        <h2>Contact Information</h2>
+        <p>Email: zenscribe@gmail.com</p>
+        <p>Phone: 123-456-7890</p>
+        <p>Address: 800 N. State College Blvd</p>
+      </div>
     </div>
   );
 }
