@@ -37,12 +37,13 @@ const Entries = () => {
       </header>
       <main>
         <Button onClick={fetchData}>Refresh</Button>
-        <div>
+        <ol style={{ listStyleType: 'none', padding: 0 }}>
           {entries.map(entry => (
-            <EntryView date={entry.createdAt}>{entry.note}</EntryView>
-            // key={entry.createdAt}
+            <li key={entry.createdAt}>
+            <EntryView  date={entry.createdAt} rating={entry.rating}>{entry.note}</EntryView>
+            </li>
           ))}
-        </div>
+        </ol>
       </main>
     </div>
   );
