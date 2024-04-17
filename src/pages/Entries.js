@@ -39,7 +39,7 @@ const Entries = () => {
         <Button onClick={fetchData}>Refresh</Button>
         <div>
           {entries.map(entry => (
-            <EntryView date={entry.createdAt}>{entry.note}</EntryView>
+            <EntryView date={entry.createdAt} rating={entry.rating}>{entry.note}</EntryView>
             // key={entry.createdAt}
           ))}
         </div>
