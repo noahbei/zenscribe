@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../logo.svg';
 import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { Navigate } from 'react-router-dom';
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [redirectToHome, setRedirectToHome] = useState(false);
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
@@ -17,6 +19,7 @@ const AuthPage = () => {
     e.preventDefault();
     try {
       isLogin ? await signInWithEmailAndPassword(auth, email, password) : await createUserWithEmailAndPassword(auth, email, password);
+      setRedirectToHome(true);
     } catch (error) {
       console.error(error)
     }
@@ -26,6 +29,7 @@ const AuthPage = () => {
     e.preventDefault();
     try {
       await signInWithPopup(auth, googleProvider);
+      setRedirectToHome(true);
     } catch (error) {
       console.error(error)
     }
@@ -55,6 +59,10 @@ const AuthPage = () => {
     height: '250px',
     marginBottom: '1px',
     
+  }
+
+  if (redirectToHome) {
+    return <Navigate to="/Home" />;
   }
 
   return (

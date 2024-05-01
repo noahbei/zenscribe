@@ -11,33 +11,36 @@ import Home from './pages/Home.js';
 import AuthPage from './pages/AuthPage.js'
 import Entries from './pages/Entries.js';
 
-const router = createBrowserRouter([{
-  path: '/',
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AuthPage />,
+    errorElement: <Error />
+  },
+  {
+  path: '/Home',
   element: <Homepage />,
   errorElement: <Error />,
   children: [
     {
-      path: '/Home',
-      element: <AuthPage />
-    },
-    {
-      path: '/Dashboard',
+      path: 'Dashboard',
       element: <Dashboard />
     },
     {
-      path: '/Journal',
+      path: 'Journal',
       element: <Journal />
     },
     {
-      path: '/Contact',
+      path: 'Contact',
       element: <Contact />
     },
     {
-      path: '/Entries',
+      path: 'Entries',
       element: <Entries />
     }
   ]
-}]);
+}
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
