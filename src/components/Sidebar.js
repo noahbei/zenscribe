@@ -32,27 +32,22 @@ const Sidebar = () => {
     <div style={sidebarStyle}>
       <Logo/>
       <User/>
-      <NavLink to={'/Home'} style={({ isActive }) => {
-              return isActive ? NavLinkStyleSelected : NavLinkStyle;
-            }}>
-        Home
-      </NavLink>
-      <NavLink to={'/Dashboard'} style={({ isActive }) => {
+      <NavLink to={'/Home/dashboard'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Dashboard
       </NavLink>
-      <NavLink to={'/Journal'} style={({ isActive }) => {
+      <NavLink to={'/Home/journal'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Journal
       </NavLink>
-      <NavLink to={'/Contact'} style={({ isActive }) => {
+      <NavLink to={'/Home/contact'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Contact
       </NavLink>
-      <NavLink to={'/Entries'} style={({ isActive }) => {
+      <NavLink to={'/Home/entries'} style={({ isActive }) => {
               return isActive ? NavLinkStyleSelected : NavLinkStyle;
             }}>
         Entries

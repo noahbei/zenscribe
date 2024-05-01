@@ -7,7 +7,6 @@ import Error from './pages/Error.js';
 import Dashboard from './pages/Dashboard.js';
 import Contact from './pages/Contact.js';
 import Journal from './pages/Journal.js';
-import Home from './pages/Home.js';
 import AuthPage from './pages/AuthPage.js'
 import Entries from './pages/Entries.js';
 
@@ -23,19 +22,19 @@ const router = createBrowserRouter([
   errorElement: <Error />,
   children: [
     {
-      path: 'Dashboard',
+      path: 'dashboard',
       element: <Dashboard />
     },
     {
-      path: 'Journal',
+      path: 'journal',
       element: <Journal />
     },
     {
-      path: 'Contact',
+      path: 'contact',
       element: <Contact />
     },
     {
-      path: 'Entries',
+      path: 'entries',
       element: <Entries />
     }
   ]
