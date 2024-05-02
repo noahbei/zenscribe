@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from '../logo.svg';
 import User from "./User";
+import { auth } from "../config/firebase";
+import { signOut } from "firebase/auth";
+import { useEffect } from "react";
 
 const Sidebar = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   const sidebarStyle = {
     height: "100%",
     width: "200px",
@@ -21,11 +35,29 @@ const Sidebar = () => {
     textDecoration: "none",
   };
 
+  const AStyle = {
+    display: "inline-block", // Display as inline-block to fit the content
+    padding: "10px 20px",
+    color: "white",
+    textDecoration: "none",
+    cursor: "pointer",
+    border: "none", // Remove button border
+    background: "none", // Remove button background
+  };
+
   const NavLinkStyleSelected = {
     display: "block",
     padding: "10px 20px",
     color: "#97C5ED",
     textDecoration: "none",
+  };
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -52,6 +84,11 @@ const Sidebar = () => {
             }}>
         Entries
       </NavLink>
+      {currentUser ? (
+        <div style={AStyle} onClick={logout}>Log Out</div>
+      ) : (
+        <NavLink to={'/'} style={NavLinkStyle}>Log In</NavLink>
+      )}
     </div>
   );
 };
