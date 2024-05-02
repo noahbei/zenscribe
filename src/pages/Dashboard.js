@@ -61,7 +61,7 @@ const Dashboard = () => {
       </header>
       <main>
         <div style={dashboardContainer}>
-          <NavLink to={'/Journal'}>
+          <NavLink to={'/Home/journal'}>
             <Button style={buttonStyle}>New Entry</Button>
           </NavLink>
           <div style={calStyle}>
