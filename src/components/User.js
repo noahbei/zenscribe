@@ -19,6 +19,7 @@ const User = () => {
     padding: "10px 20px",
     color: "white",
     textDecoration: "none",
+    height: "70px"
   };
 
   return (
