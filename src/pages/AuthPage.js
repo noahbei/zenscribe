@@ -114,7 +114,7 @@ const AuthPage = () => {
   }
 
   if (redirectToHome) {
-    return <Navigate to="/Home" />;
+    return <Navigate to="/Home/dashboard" />;
   }
 
   return (
