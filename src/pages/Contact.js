@@ -1,4 +1,5 @@
 import React from 'react';
+import PageTitle from '../components/PageTitle';
 
 const Contact = () => {
   const contactStyle = {
@@ -7,8 +8,8 @@ const Contact = () => {
   }
 
   return (
-    <div style={contactStyle}>
-      <h1>Contact Us</h1>
+    <div className={'container-style'} style={contactStyle}>
+      <PageTitle>Contact Us</PageTitle>
       <p>Feel free to reach out to us using the information below:</p>
 
       <div>

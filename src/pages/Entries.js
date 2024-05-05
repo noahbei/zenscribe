@@ -3,6 +3,7 @@ import { auth, db } from '../config/firebase'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Button from '../components/Button';
 import EntryView from '../components/EntryView';
+import PageTitle from '../components/PageTitle';
 
 const Entries = () => {
   const outerStyle = {
@@ -31,9 +32,9 @@ const Entries = () => {
   }, []);
   
   return (
-    <div style={outerStyle}>
+    <div style={outerStyle} className={'container-style'}>
       <header>
-        <h1>Entries</h1>
+        <PageTitle>Entries</PageTitle>
       </header>
       <main>
         <Button onClick={fetchData}>Refresh</Button>

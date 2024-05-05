@@ -5,6 +5,7 @@ import WeeklyCalendar from '../components/WeeklyCalendar';
 import { NavLink } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from '../config/firebase';
+import PageTitle from '../components/PageTitle';
 
 const Dashboard = () => {
   const dashboardStyle = {
@@ -55,9 +56,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div style={dashboardStyle}>
+    <div style={dashboardStyle} className={'container-style'}>
       <header>
-        <h1>Dashboard</h1>
+        <PageTitle>Dashboard</PageTitle>
       </header>
       <main>
         <div style={dashboardContainer}>
