@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import Button from '../components/Button'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PageTitle from "../components/PageTitle";
 
 const Journal = () => {
   const notesStyle = {
@@ -83,9 +84,9 @@ const Journal = () => {
   }
 
   return (
-    <div style={notesStyle}>
+    <div style={notesStyle} className={'container-style'}>
       <header>
-        <h1>Journal</h1>
+        <PageTitle>Journal</PageTitle>
       </header>
       <main>
         <ToastContainer
