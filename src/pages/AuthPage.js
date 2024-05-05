@@ -158,7 +158,7 @@ const AuthPage = () => {
           <Button onClick={signInWithGoogle}>Sign in with google</Button>
           
           <p>
-            {isLogin ? 'Don\'t have an account?' : 'Already have an account?'}
+            {isLogin ? 'Don\'t have an account? ' : 'Already have an account? '}
             <Link to="#" onClick={toggleAuthMode}>
               {isLogin ? 'Signup' : 'Login'}
             </Link>
