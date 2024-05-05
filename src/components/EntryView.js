@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../styles/EntryView.css';
-import { child } from 'firebase/database';
 
 const EntryView = ({ children, date, rating, onClick }) => {
   const [isExpanded, setIsExpanded] = useState(false)

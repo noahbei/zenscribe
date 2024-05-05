@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../logo.svg';
+import { ReactComponent as Title } from '../zenscribe-title.svg'
 import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { Navigate } from 'react-router-dom';
+import Button from '../components/Button'
+
+const Separator = () => (
+  <div style={{ display: 'flex', alignItems: 'center', width: '100%', margin: '10px 0' }}>
+    <div style={{ flex: 1, height: '1px', backgroundColor: 'black' }}></div>
+    <div style={{ margin: '0 10px', color: 'black' }}>or</div>
+    <div style={{ flex: 1, height: '1px', backgroundColor: 'black' }}></div>
+  </div>
+);
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -43,22 +53,64 @@ const AuthPage = () => {
     }
   }
 
-  const authPageStyle = {
+  const containerStyle = {
+    backgroundColor: '#e5e5f7',
+    opacity: 0.9,
+    backgroundImage: 'radial-gradient(#444cf7 1.1px, #e5e5f7 1.1px)',
+    backgroundSize: '22px 22px',
+    height: "100vh",
+    display: "flex"
+  };
+  
+  const authStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     height: '600px',
-
-    padding: '2px',
+    width: '400px',
+    padding: '20px',
     margin: 'auto',
+    border: '1px solid #ccc',
+    borderRadius: '10px',
+    maxWidth: '400px',
+    backgroundColor: 'white'
   };
 
-  const Logostyle = {
-    width: '250px', 
-    height: '250px',
-    marginBottom: '1px',
-    
+  const formStyle = {
+    width: '100%',
+    marginTop: '20px',
+  };
+  
+  const labelStyle = {
+    marginBottom: '5px',
+  };
+  
+  const inputStyle = {
+    width: '100%',
+    padding: '5px',
+    marginBottom: '10px',
+    borderRadius: '3px',
+    border: '1px solid #ccc',
+    boxSizing: 'border-box',
+  };
+  
+  const buttonContainerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '20px',
+  };
+
+  const LogoStyle = {
+    position: "fixed",
+    left: 0,
+    top: 0,
+    height: "200px",
+    width: "200px"
+  }
+
+  const TitleStyle = {
+    maxWidth: '800px'
   }
 
   if (redirectToHome) {
@@ -66,43 +118,53 @@ const AuthPage = () => {
   }
 
   return (
-    <div style={authPageStyle}>
-      <Logo style ={Logostyle} />
-      <h2>{isLogin ? 'Login' : 'Signup'}</h2>
-      <form onSubmit={handleSubmit}>
+    <div style={containerStyle}>
+      <div style={authStyle}>
+        <Title style={TitleStyle}/>
+        <Logo style={LogoStyle}/>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <h2>{isLogin ? 'Login' : 'Signup'}</h2>
+          <form style={formStyle} onSubmit={handleSubmit}>
+            <div>
+              <label style={labelStyle} htmlFor="email">Email:</label>
+              <input
+                style={inputStyle}
+                type="text"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label style={labelStyle} htmlFor="password">Password:</label>
+              <input
+                style={inputStyle}
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div style={buttonContainerStyle}>
+              <Button type="submit">{isLogin ? 'Login' : 'Signup'}</Button>
+              <Button onClick={logout}>logout</Button>
+            </div>
+          </form>
+          <Separator/>
+          <Button onClick={signInWithGoogle}>Sign in with google</Button>
+          
+          <p>
+            {isLogin ? 'Don\'t have an account? ' : 'Already have an account? '}
+            <Link to="#" onClick={toggleAuthMode}>
+              {isLogin ? 'Signup' : 'Login'}
+            </Link>
+          </p>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
-      </form>
-      <button onClick={signInWithGoogle}>Sign in with google</button>
-      <button onClick={logout}>logout</button>
-      <p>
-        {isLogin ? 'Don\'t have an account?' : 'Already have an account?'}
-        <Link to="#" onClick={toggleAuthMode}>
-          {isLogin ? 'Signup' : 'Login'}
-        </Link>
-      </p>
+      </div>
     </div>
   );
 };
