@@ -1,44 +1,60 @@
-import React, { useState } from 'react';
-import { auth, db } from "../config/firebase"
+import React, { useState } from "react";
+import { auth, db } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Button from '../components/Button'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Journal = () => {
   const notesStyle = {
     marginLeft: "200px",
-    padding: "0 20px"
-  }
+    padding: "0 20px",
+  };
 
-  const textareaStyle = {
-    resize: "none"
-  }
+  const formStyle = {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
 
-  const [note, setNote] = useState('')
-  const [rating, setRating] = useState(0)
+  const inputStyle = {
+    width: "100%",
+    padding: "10px",
+    marginBottom: "10px",
+    borderRadius: "3px",
+    border: "1px solid #ccc",
+    resize: "none",
+  };
+
+  const [note, setNote] = useState("");
+  const [rating, setRating] = useState(0);
 
   function handleChange(event) {
     setNote(event.target.value);
   }
 
   function handleRatingChange(event) {
-    if (parseInt(event.target.value) >= 0 && parseInt(event.target.value) <= 10) {
-      setRating(parseInt(event.target.value))
+    if (
+      parseInt(event.target.value) >= 0 &&
+      parseInt(event.target.value) <= 10
+    ) {
+      setRating(parseInt(event.target.value));
     }
   }
 
   function getDate() {
     const date = new Date();
 
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
       hour12: true,
-      timeZoneName: 'short'
+      timeZoneName: "short",
     });
     const formattedDate = formatter.format(date);
     return formattedDate;
@@ -52,19 +68,17 @@ const Journal = () => {
           user: auth.currentUser.uid,
           note: note,
           createdAt: getDate(),
-          rating: rating
+          rating: rating,
         });
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-  
-      setNote('')
-      setRating(0)
-    }
-    else {
+
+      setNote("");
+      setRating(0);
+    } else {
       toast("User not signed in");
-      console.log("else")
     }
   }
 
@@ -74,7 +88,8 @@ const Journal = () => {
         <h1>Journal</h1>
       </header>
       <main>
-        <ToastContainer position="top-center"
+        <ToastContainer
+          position="top-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -85,22 +100,33 @@ const Journal = () => {
           pauseOnHover
           theme="light"
         />
-        <form onSubmit={handleSubmit}>
-          <textarea style={textareaStyle}
+        <form style={formStyle} onSubmit={handleSubmit}>
+          <textarea
+            style={inputStyle}
             value={note}
             onChange={handleChange}
             placeholder="Type your journal entry here..."
             rows={20}
-            cols={100}
             autoFocus
             required
           />
-          <input onChange={handleRatingChange} placeholder="rating" type="number" name="quantity" min="0" max="10" required/>
-          <button type="submit">Submit</button>
+          <input
+            style={{...inputStyle, textAlign: 'center'}}
+            onChange={handleRatingChange}
+            placeholder="Rating (0-10)"
+            type="number"
+            min="0"
+            max="10"
+            value={rating}
+            required
+          />
+          <Button style={inputStyle} type="submit">
+            Submit
+          </Button>
         </form>
       </main>
     </div>
   );
-}
+};
 
 export default Journal;
