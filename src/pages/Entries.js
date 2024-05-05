@@ -8,7 +8,9 @@ import PageTitle from '../components/PageTitle';
 const Entries = () => {
   const outerStyle = {
     marginLeft: "200px",
-    padding: "0 20px"
+    padding: "0 20px",
+    padding: "0 20px",
+    height: 'auto'
   }
 
   const [entries, setEntries] = useState([]);
