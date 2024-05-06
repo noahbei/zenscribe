@@ -48,6 +48,8 @@ const AuthPage = () => {
   const logout = async () => {
     try {
       await signOut(auth)
+      setEmail('');
+      setPassword('');
     } catch (error) {
       console.error(error)
     }
@@ -150,8 +152,8 @@ const AuthPage = () => {
               />
             </div>
             <div style={buttonContainerStyle}>
-              <Button type="submit">{isLogin ? 'Login' : 'Signup'}</Button>
-              <Button onClick={logout}>logout</Button>
+              <Button type={"submit"}>{isLogin ? 'Login' : 'Signup'}</Button>
+              <Button type={"button"} onClick={logout}>logout</Button>
             </div>
           </form>
           <Separator/>
