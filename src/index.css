@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image: radial-gradient(#444cf7 1.1px, #e5e5f7 1.1px);
+  background-size: 22px 22px;
 }
 
 code {
@@ -13,10 +17,6 @@ code {
 }
 
 .container-style {
-    background-color: #e5e5f7;
-    opacity: 0.9;
-    background-image: radial-gradient(#444cf7 1.1px, #e5e5f7 1.1px);
-    background-size: 22px 22px;
     height: 100vh;
-  }
+}
   
