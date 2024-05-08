@@ -103,7 +103,7 @@ const Journal = () => {
         />
         <form style={formStyle} onSubmit={handleSubmit}>
           <textarea
-            style={inputStyle}
+            style={{...inputStyle, fontSize: '20px'}}
             value={note}
             onChange={handleChange}
             placeholder="Type your journal entry here..."
