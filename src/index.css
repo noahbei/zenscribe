@@ -11,6 +11,10 @@ body {
   background-size: 22px 22px;
 }
 
+body * {
+  opacity: 1 !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
