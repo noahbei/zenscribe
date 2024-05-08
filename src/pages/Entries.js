@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../config/firebase'
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
 import Button from '../components/Button';
 import EntryView from '../components/EntryView';
 import PageTitle from '../components/PageTitle';
@@ -26,6 +26,17 @@ const Entries = () => {
       console.error('Error fetching entries: ', error);
     }
   };
+
+  const handleDelete = async (entryId) => {
+    try {
+      await deleteDoc(doc(db, "notes", entryId));
+      fetchData();
+      console.log("document deleted")
+    } catch (error) {
+      console.error('Error deleting entry: ', error);
+    }
+  };
+
   useEffect(() => {
     if (auth.currentUser) {
       fetchData();
@@ -43,7 +54,7 @@ const Entries = () => {
         <ol style={{ listStyleType: 'none', padding: 0 }}>
           {entries.map(entry => (
             <li key={entry.createdAt}>
-            <EntryView  date={entry.createdAt} rating={entry.rating}>{entry.note}</EntryView>
+            <EntryView  date={entry.createdAt} rating={entry.rating} onDelete={() => handleDelete(entry.id)}>{entry.note}</EntryView>
             </li>
           ))}
         </ol>
