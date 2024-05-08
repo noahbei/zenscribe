@@ -1,50 +1,30 @@
-import React, { useState } from 'react';
-import '../styles/Calendar.css';
-import Button from './Button';
+import React from 'react';
 
 const Calendar = () => {
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-  const [currentDate, setCurrentDate] = useState(new Date());
-
-  const renderCalendar = () => {
-    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-    const startingDayOfWeek = firstDayOfMonth.getDay();
-
-    const calendar = [];
-    let day = 1;
-
-    // Fill in empty cells before the first day of the month
-    for (let i = 0; i < startingDayOfWeek; i++) {
-      calendar.push(<div key={`empty-${i}`} className="calendar-cell empty-cell"></div>);
-    }
-
-    // Fill in days of the month
-    while (day <= daysInMonth) {
-      calendar.push(<div key={day} className="calendar-cell">{day}</div>);
-      day++;
-    }
-
-    return calendar;
-  };
-
   return (
-    <div className="calendar">
-      <div className="calendar-header">
-        <Button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>Prev</Button>
-        <h2>{months[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
-        <Button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}>Next</Button>
-      </div>
-      <div className="calendar-body">
-        {daysOfWeek.map(day => (
-          <div key={day} className="calendar-cell day-of-week">{day}</div>
-        ))}
-        {renderCalendar()}
+    <div style={styles.welcomeBox}>
+      <div style={styles.welcomeText}>
+        Welcome to Zenscribe! We're excited to have you here.
       </div>
     </div>
   );
 }
+
+const styles = {
+  welcomeBox: {
+    backgroundColor: '#f8f9fa',
+    border: '1px solid #ced4da',
+    borderRadius: '8px',
+    padding: '20px',
+    textAlign: 'center',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  },
+  welcomeText: {
+    fontSize: '3rem',
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: '10px',
+  },
+};
 
 export default Calendar;
