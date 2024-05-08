@@ -16,7 +16,8 @@ const EntryView = ({ children, date, rating, onClick, onDelete }) => {
   }
 
   const flexStyle = {
-    display: "flex"
+    display: "flex",
+    justifyContent: "space-between"
   }
 
   const buttonStyle = {
