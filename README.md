@@ -49,6 +49,10 @@ Zenscribe is built using the following technologies:
 - **Firebase**: Backend services for authentication and data storage.
 - **React Router**: Library for routing in a React application.
 
+## Demo Video
+
+[Link to demo](https://drive.google.com/file/d/1wb4Okh9ZJ9o3zTiGALV8bGzhoanWuXIF/view?usp=drive_link)
+
 ## Contributing
 
 If you'd like to contribute to Zenscribe, feel free to fork the repository and submit a pull request. Contributions are always welcome!
