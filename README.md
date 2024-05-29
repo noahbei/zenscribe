@@ -10,7 +10,7 @@ Zenscribe is a journaling application designed to help users capture their thoug
 
 - **Journal Page**: Users can navigate to the journal page to create new entries, write about their day, and rate their day.
 
-- **Entries Page**: All the journal entries created by the user are available on the entries page for easy access and review.
+- **Entries Page**: All the journal entries created by the user are available on the entries page for easy access and review. You can also delete your entries on this page
 
 - **Dashboard Page**: Users are greeted by this dashboard landing page once logged in. An overview of your weekly ratings are shown in a bar graph here.
 
